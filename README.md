@@ -26,3 +26,10 @@ Fuentes de algunos recursos investigados y estudiados para aplicar en la prueba.
 - [Lnk design inspiration](https://dribbble.com/shots/7365479-Movies-App)
 - [Link Resource for apply MVVM](https://www.youtube.com/watch?v=W1e7d3cvnRo&t=2s)
 - [Link Resource for learn Flutter](https://www.udemy.com/course/flutter-ios-android-fernando-herrera/learn/lecture/18737232#content)
+
+
+# TODO: 
+- Añadir localization
+- Mejorar implementación del mixin del scroll view
+- Centralizar los formatos de texto y estilos
+- Separar en archivos aparte algunos widgets usado en details screen
