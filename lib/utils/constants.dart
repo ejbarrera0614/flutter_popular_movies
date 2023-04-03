@@ -19,3 +19,7 @@ const int UNKNOWN_ERROR = 103;
 //Screens
 const String LANDSCAPE = 'Orientation.landscape';
 const String PORTRAIT = 'Orientation.portrait';
+
+//ROUTES
+const String HOME = 'home';
+const String DETAIL = 'detail';

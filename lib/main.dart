@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:popular_movies/utils/constants.dart';
 import 'package:popular_movies/view_models/providers.dart';
 import 'package:provider/provider.dart';
 import 'package:popular_movies/themes/themes_manager.dart';
@@ -22,10 +23,9 @@ class MyApp extends StatelessWidget {
           title: 'Popular Movies',
           initialRoute: 'home',
           routes: {
-            'home': (_) => const HomeScreen(),
-            'detail': (_) => const DetailScreen(),
+            HOME: (_) => const HomeScreen(),
+            DETAIL: (_) => const DetailScreen(),
           },
-          //navigatorObservers: [CustomNavigatorObserver()],
           theme: ThemeManager.lightTheme,
         );
       }),
