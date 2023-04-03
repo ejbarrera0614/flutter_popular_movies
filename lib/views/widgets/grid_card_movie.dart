@@ -51,13 +51,13 @@ class GridCardMovie extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              TextInfoCard(text: movie.title),
-              TextInfoCard(text: '${movie.voteAverage}', fontSize: 14),
+              TextInfoCard(movie.title),
+              TextInfoCard('${movie.voteAverage}', fontSize: 14),
               const Expanded(
                 child: SizedBox(),
               ),
-              const TextInfoCard(
-                  text: 'Ver más...', fontSize: 12, color: Colors.blue),
+              const TextInfoCard('Ver más...',
+                  fontSize: 12, color: Colors.blue),
             ],
           ),
         ),

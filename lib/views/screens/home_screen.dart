@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:popular_movies/utils/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:popular_movies/models/models.dart';
 import 'package:popular_movies/mixins/scroll_controller_mixin.dart';
@@ -16,13 +17,12 @@ class HomeScreen extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
         gradient: ThemeManager.linearGradienteBg,
-        color: ThemeManager.generalContentColor,
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
             backgroundColor: Colors.transparent,
-            title: const Text('Películas populares')),
+            title: const Text('Películas más populares')),
         body: Column(
           children: [
             if (moviesProvider.isLoading &&
@@ -88,18 +88,14 @@ class _HomeBodyState extends State<_HomeBody> with ScrollControllerMixin {
           child: GridView.builder(
             controller: scrollController,
             itemCount: widget.movies.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 15,
-                mainAxisSpacing: 25,
-                mainAxisExtent: 270),
+            gridDelegate: ThemeManager.gridViewDelegateHomeScreen,
             itemBuilder: (_, index) {
               final movie = widget.movies[index];
               return GridCardMovie(
                 movie: movie,
                 onTapAction: () {
                   widget.setMovieSelected(movie);
-                  Navigator.pushNamed(context, 'detail');
+                  Navigator.pushNamed(context, DETAIL);
                 },
               );
             },

@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:popular_movies/themes/themes_manager.dart';
-import 'package:popular_movies/view_models/providers.dart';
-import 'package:popular_movies/views/widgets/text_info_card.dart';
 import 'package:provider/provider.dart';
+import 'package:popular_movies/themes/themes_manager.dart';
 import 'package:popular_movies/models/models.dart' show MovieModel;
+import 'package:popular_movies/view_models/providers.dart';
+import 'package:popular_movies/views/widgets/widgets.dart'
+    show GenresMovieWrap, SubtitleCore, TextInfoCard, TextStarIcon, TitleCore;
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final MovieModel movie = context.watch<MoviesProvider>().selectedMovie;
-    final bool isPortrait =
-        MediaQuery.of(context).orientation == Orientation.portrait;
+    final mediaQuery = MediaQuery.of(context);
+    final bool isPortrait = mediaQuery.orientation == Orientation.portrait;
 
+    /// Cálculos que se realizan para posicionar el contenido si es landscape o portrait
     final double borderContainer = isPortrait ? 60 : 0;
-    final heightImgSize = MediaQuery.of(context).size.height / 2.5;
+    final heightImgSize = mediaQuery.size.height / 2.5;
     final double marginTopContainer =
         isPortrait ? heightImgSize - borderContainer : 0;
+    final double minContentHeight = mediaQuery.size.height - marginTopContainer;
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -29,14 +32,10 @@ class DetailScreen extends StatelessWidget {
             _BackGroundImg(movie: movie, heightImgSize: heightImgSize),
           SingleChildScrollView(
             child: Container(
-              constraints: BoxConstraints(
-                  minHeight:
-                      MediaQuery.of(context).size.height - marginTopContainer),
-              padding: const EdgeInsets.only(
-                  left: 40, right: 40, top: kToolbarHeight, bottom: 10),
+              constraints: BoxConstraints(minHeight: minContentHeight),
+              padding: ThemeManager.paddingContentDetailsScreen,
               decoration: BoxDecoration(
                 gradient: ThemeManager.linearGradienteBg,
-                color: ThemeManager.generalContentColor,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(borderContainer),
                   topRight: Radius.circular(borderContainer),
@@ -90,22 +89,8 @@ class _DetailScreenBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          movie.title,
-          style: const TextStyle(
-              decoration: TextDecoration.none,
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.white),
-        ),
-        Text(
-          movie.originalTitle,
-          style: const TextStyle(
-              decoration: TextDecoration.none,
-              fontSize: 18,
-              fontWeight: FontWeight.w400,
-              color: Colors.white),
-        ),
+        TitleCore(title: movie.title),
+        SubtitleCore(subtitle: movie.originalTitle),
         const SizedBox(
           height: 20,
         ),
@@ -124,9 +109,7 @@ class _DetailScreenBody extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(
-          height: 10,
-        ),
+        const SizedBox(height: 10),
         Text(
           movie.overview,
           style: const TextStyle(
@@ -152,67 +135,11 @@ class _RateAndGenreInfo extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 5),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        _GenresWidget(genreIds: movie.genreIds),
-        RichText(
-          text: TextSpan(
-            style: const TextStyle(
-                decoration: TextDecoration.none,
-                fontSize: 18,
-                fontWeight: FontWeight.w400,
-                color: Colors.white),
-            text: '${movie.voteAverage}',
-            children: const [
-              WidgetSpan(child: SizedBox(width: 10)),
-              WidgetSpan(
-                  child: Icon(
-                Icons.star_border,
-                color: Colors.yellowAccent,
-              ))
-            ],
-          ),
-        ),
-        Text(
-          '${movie.voteCount} votos',
-          style: const TextStyle(
-            decoration: TextDecoration.none,
-            fontSize: 18,
-            fontWeight: FontWeight.w400,
-            color: Colors.white,
-          ),
-        )
+        GenresMovieWrap(genreIds: movie.genreIds),
+        const SizedBox(height: 5),
+        TextStarIcon('${movie.voteAverage}'),
+        TextInfoCard('${movie.voteCount} votos', paddingLeft: 0),
       ]),
-    );
-  }
-}
-
-class _GenresWidget extends StatelessWidget {
-  const _GenresWidget({
-    required this.genreIds,
-  });
-
-  final List<int> genreIds;
-
-  @override
-  Widget build(BuildContext context) {
-    final GenresProvider genresProvider = context.watch<GenresProvider>();
-
-    return Wrap(
-      spacing: 8,
-      runSpacing: 8,
-      children: [
-        if (genresProvider.isLoading)
-          const Text('Cargando géneros de la película...'),
-        if (genresProvider.genresError != null)
-          const Text('Ocurrió un error cargando géneros de la película...'),
-        if (!genresProvider.isLoading && genresProvider.genres.isNotEmpty)
-          ...genreIds.map((e) => Container(
-              padding: const EdgeInsets.all(7),
-              decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: Colors.tealAccent),
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(10)),
-              child: Text(genresProvider.genres[e]!))),
-      ],
     );
   }
 }
