@@ -22,8 +22,8 @@ En la pantalla detalles muestra una imagen de fondo y una caja bordeada con los 
 Al cambiar a una orientación landscape, la imagen y los bordes de la caja se eliminan.
 
 Fuentes de algunos recursos investigados y estudiados para aplicar en la prueba. 
-- [Lnk design inspiration](https://stripo.email/en/demo/?template=1141455&project=386966&guid=72c248b1-b891-4a2e-820b-879e4f3db2a8)
-- [Lnk design inspiration](https://dribbble.com/shots/7365479-Movies-App)
-- [Link Resource for apply MVVM](https://www.youtube.com/watch?v=W1e7d3cvnRo&t=2s)
-- [Link Resource for learn Flutter](https://www.udemy.com/course/flutter-ios-android-fernando-herrera/learn/lecture/18737232#content)
+- [Enlace de diseño que sirvio de inspiración](https://stripo.email/en/demo/?template=1141455&project=386966&guid=72c248b1-b891-4a2e-820b-879e4f3db2a8)
+- [Enlace de diseño que sirvio de inspiración](https://dribbble.com/shots/7365479-Movies-App)
+- [Enlace de recurso utilizado para aprender sobre MVVM](https://www.youtube.com/watch?v=W1e7d3cvnRo&t=2s)
+- [Enlace de recurso para aprender Flutter](https://www.udemy.com/course/flutter-ios-android-fernando-herrera/learn/lecture/18737232#content)
 
