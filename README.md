@@ -1,21 +1,28 @@
-# popular_movies
+# Popular movies
 
-A new Flutter project.
-[Lnk design inspiration](https://stripo.email/en/demo/?template=1141455&project=386966&guid=72c248b1-b891-4a2e-820b-879e4f3db2a8)
-[Lnk design inspiration](https://dribbble.com/shots/7365479-Movies-App)
-[Link Resource for apply MVVM](https://www.youtube.com/watch?v=W1e7d3cvnRo&t=2s)
-[Link Resource for learn Flutter](https://www.udemy.com/course/flutter-ios-android-fernando-herrera/learn/lecture/18737232#content)
+Este repositorio contiene una app hecha con Flutter que consume la API de películas populares de [The Movie Database](https://developers.themoviedb.org/3/movies/get-popular-movies.).
 
+# Requisitos
+Antes de comenzar, asegúrese de tener instalado Flutter y Dart en su sistema. Si no los tiene, consulte la [documentación oficial](https://docs.flutter.dev/get-started/install) para obtener instrucciones detalladas sobre cómo instalarlos.
 
-## Getting Started
+# Ejecución
+Para ejecutar la aplicación, abra una terminal en el directorio raíz del proyecto y ejecute el siguiente comando:
 
-This project is a starting point for a Flutter application.
+- **flutter run**
 
-A few resources to get you started if this is your first Flutter project:
+Esto compilará la aplicación y la ejecutará en un emulador o dispositivo conectado.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+# Características
+La aplicación muestra una lista de películas populares en un scroll que va cargando más películas a medida que se va bajando y que son obtenidas de la API de The Movie Database.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API refer
+Al tocar una película, se muestra una pantalla de detalles que muestra información adicional sobre la película, como la sinopsis, puntaje promedio y consume la api de los [géneros](https://developers.themoviedb.org/3/genres/get-movie-list) y muestra los correspondientes en la pantalla.
+
+En la pantalla detalles muestra una imagen de fondo y una caja bordeada con los detalles de la película y que tiene un scroll en caso de que la sinopsis sea muy larga.
+
+Al cambiar a una orientación landscape, la imagen y los bordes de la caja se eliminan.
+
+Fuentes de algunos recursos investigados y estudiados para aplicar en la prueba. 
+- [Lnk design inspiration](https://stripo.email/en/demo/?template=1141455&project=386966&guid=72c248b1-b891-4a2e-820b-879e4f3db2a8)
+- [Lnk design inspiration](https://dribbble.com/shots/7365479-Movies-App)
+- [Link Resource for apply MVVM](https://www.youtube.com/watch?v=W1e7d3cvnRo&t=2s)
+- [Link Resource for learn Flutter](https://www.udemy.com/course/flutter-ios-android-fernando-herrera/learn/lecture/18737232#content)
